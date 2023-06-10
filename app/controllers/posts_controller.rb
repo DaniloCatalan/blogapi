@@ -2,7 +2,6 @@
 
 # posts
 class PostsController < ApplicationController
-
   rescue_from Exception do |e|
     render json: { error: e.message }, status: :internal_error
   end
