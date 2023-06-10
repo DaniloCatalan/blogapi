@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where(published: true)
     @posts = PostsSearchService.search(@posts, params[:search]) if !params[:search].nil? && params[:search].present?
-    render json: @posts, status: :ok
+    render json: @posts.includes(:user), status: :ok
   end
 
   def show
